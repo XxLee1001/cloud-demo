@@ -37,6 +37,11 @@
       <scope>annotationProcessor</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+    </dependency>
+
     <!-- 配置中心 -->
     <dependency>
       <groupId>com.alibaba.cloud</groupId>

@@ -18,7 +18,11 @@ public class ProductServiceImpl implements ProductService {
         product.setPrice(new BigDecimal("99.99"));
         product.setProductName("手机" + productId);
         product.setNum(2);
-
+        try {
+            Thread.sleep(50000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return product;
     }
 }

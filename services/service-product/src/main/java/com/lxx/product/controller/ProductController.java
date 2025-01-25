@@ -2,6 +2,7 @@ package com.lxx.product.controller;
 
 import com.lxx.product.bean.Product;
 import com.lxx.product.service.ProductService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +22,9 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/{id}")
-    public Product getProduct(@PathVariable(value = "id") Long productId) {
-        log.info("hello~");
+    public Product getProduct(@PathVariable(value = "id") Long productId, HttpServletRequest request) {
+        String header = request.getHeader("X-Token");
+        log.info("hello~, header: " + header);
         return productService.getProductById(productId);
     }
 
