@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns: '*'
+            allowed-headers: '*'
+            allowed-methods: '*'
+      routes:
+        - id: order
+          uri: lb://service-order
+          predicates:
+            - Path=/api/order/**
+          filter:
+            - RewritePath=/api/order/?(?<segment>.*),/order/$\{segment}
+        - id: product
+          uri: lb://service-product
+          predicates:
+            - Path=/api/product/**
+          filter:
+            - RewritePath=/api/product/?(?<segment>.*),/product/$\{segment}
+        - id: bing-route
+          uri: https://www.bing.com
+          predicates:
+            - Vip=user,lixiaoxiang
